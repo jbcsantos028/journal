@@ -1,0 +1,21 @@
+<h1>Itineraries listing page</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Details</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @itineraries.each do |itinerary| %>
+      <tr>
+        <td><%= itinerary.location %></td>
+        <td><%= itinerary.detail %></td>
+        <td>Placeholder</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
