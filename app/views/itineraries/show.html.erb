@@ -2,3 +2,7 @@
 
 <p><strong>Location: </strong><%= @itinerary.location %></p>
 <p><strong>Detail: </strong><%= @itinerary.detail %></p>
+
+<%= link_to 'Edit', edit_itinerary_path(@itinerary.id) %> |
+<%= link_to 'Delete', itinerary_path(@itinerary.id), method: :delete, data: { confirm: "Are you sure?" } %> |
+<%= link_to 'Return to itineraries listing', itineraries_path %>

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Journal</title>
+    <title>IlayaTravelJournal</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application',
+      'https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,300;1,500&display=swap',
+      media: 'all', 'data-turbolinks-track' => true %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% flash.each do |name, msg| %>
-      <%= msg %>
-    <% end %>
+  <body class="d-flex flex-column">
+    <%= render 'layouts/navigation' %>
+    <%= render 'layouts/messages' %>
     <%= yield %>
   </body>
 </html>

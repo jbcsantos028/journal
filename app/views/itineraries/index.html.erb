@@ -1,21 +1,28 @@
-<h1>Itineraries listing page</h1>
+<div id="page-content">
+  <h1 class="text-center mt-4">Listing all itineraries</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th>Details</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @itineraries.each do |itinerary| %>
-      <tr>
-        <td><%= itinerary.location %></td>
-        <td><%= itinerary.detail %></td>
-        <td>Placeholder</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="container">
+  <% @itineraries.each do |itinerary| %>
+    <div class="row justify-content-md-center">
+      <div class="col-8 mt-4">
+        <div class="card text-center shadow mb-5 bg-white rounded">
+          <div class="card-header font-italic">
+            by Hosetibo
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to itinerary.location, itinerary_path(itinerary), class: "text-dark" %></h5>
+            <p class="card-text"><%= truncate(itinerary.detail, length: 100) %></p>
+            <%= link_to "View", itinerary_path(itinerary), class: "btn btn-dark" %>
+            <%= link_to "Edit", edit_itinerary_path(itinerary), class: "btn btn-dark" %>
+            <%= link_to "Delete", itinerary_path(itinerary), class: "btn btn-dark", method: :delete, data: {confirm: "Are you sure?"} %>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Created <%= time_ago_in_words(itinerary.created_at) %> ago,
+            edited <%= time_ago_in_words(itinerary.updated_at) %> ago</small>
+          </div>
+          </div>
+        </div>
+    </div>
+  <% end %>
+  </div>
+</div>

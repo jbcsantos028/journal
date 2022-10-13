@@ -1,7 +1,7 @@
 class ItinerariesController < ApplicationController
+  before_action :set_itinerary, only: [:show, :edit, :update, :destroy]
 
   def show
-    @itinerary = Itinerary.find(params[:id])
   end
 
   def index
@@ -13,11 +13,10 @@ class ItinerariesController < ApplicationController
   end
 
   def edit
-    @itinerary = Itinerary.find(params[:id])
   end
 
   def create
-    @itinerary = Itinerary.new(params.require(:itinerary).permit(:location, :detail))
+    @itinerary = Itinerary.new(itinerary_params)
     if @itinerary.save
       flash[:notice] = "Itinerary was created successfully."
       redirect_to itinerary_path(@itinerary)
@@ -27,13 +26,28 @@ class ItinerariesController < ApplicationController
   end
 
   def update
-    @itinerary = Itinerary.find(params[:id])
-    if @itinerary.update(params.require(:itinerary).permit(:location, :detail))
+    if @itinerary.update(itinerary_params)
       flash[:notice] = "Itinerary was update successfully."
       redirect_to itinerary_path(@itinerary)
     else
       render 'edit'
     end
   end
+
+  def destroy
+    @itinerary.destroy
+    redirect_to itineraries_path
+  end
+
+  private
+
+  def set_itinerary
+    @itinerary = Itinerary.find(params[:id])
+  end
+
+  def itinerary_params
+    params.require(:itinerary).permit(:location, :detail)
+  end
+
 
 end
