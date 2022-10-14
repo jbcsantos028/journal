@@ -1,8 +1,22 @@
-<h1>Showing itinerary details</h1>
+<h2 class="text-center mt-4"><%= @itinerary.location %></h2>
 
-<p><strong>Location: </strong><%= @itinerary.location %></p>
-<p><strong>Detail: </strong><%= @itinerary.detail %></p>
-
-<%= link_to 'Edit', edit_itinerary_path(@itinerary.id) %> |
-<%= link_to 'Delete', itinerary_path(@itinerary.id), method: :delete, data: { confirm: "Are you sure?" } %> |
-<%= link_to 'Return to itineraries listing', itineraries_path %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-8 mt-4">
+      <div class="card text-center shadow mb-5 bg-white rounded">
+        <div class="card-header font-italic">
+          by Hosetibo
+        </div>
+        <div class="card-body">
+          <div class="card-text"><%= simple_format(@itinerary.detail) %></div>
+          <%= link_to "Edit", edit_itinerary_path(@itinerary), class: "btn btn-dark" %>
+          <%= link_to "Delete", itinerary_path(@itinerary), class: "btn btn-dark", method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Created <%= time_ago_in_words(@itinerary.created_at) %> ago,
+          edited <%= time_ago_in_words(@itinerary.updated_at) %> ago</small>
+        </div>
+        </div>
+      </div>
+  </div>
+</div>

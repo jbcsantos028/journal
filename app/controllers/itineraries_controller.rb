@@ -27,7 +27,7 @@ class ItinerariesController < ApplicationController
 
   def update
     if @itinerary.update(itinerary_params)
-      flash[:notice] = "Itinerary was update successfully."
+      flash[:notice] = "Itinerary was updated successfully."
       redirect_to itinerary_path(@itinerary)
     else
       render 'edit'
