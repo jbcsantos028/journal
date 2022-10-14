@@ -53,6 +53,7 @@ group :test do
 end
 
 group :production do
+  #added postgres for prod
   gem 'pg', '~> 1.1'
 end
 
