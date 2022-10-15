@@ -48,6 +48,4 @@ class ItinerariesController < ApplicationController
   def itinerary_params
     params.require(:itinerary).permit(:location, :detail)
   end
-
-
 end
